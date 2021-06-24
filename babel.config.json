@@ -1,0 +1,6 @@
+{
+  // "presets": ["@babel/preset-react", "@babel/preset-env"],
+  // "plugins": ["@babel/plugin-transform-react-jsx", "@babel/plugin-syntax-jsx"]
+  "presets": ["@babel/typescript", ["@babel/env", {"loose": true}], "@babel/react"],
+  "plugins": [["@babel/proposal-class-properties", {"loose": true}]]
+}
