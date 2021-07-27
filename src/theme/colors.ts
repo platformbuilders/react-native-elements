@@ -7,7 +7,7 @@ const tertiary = '#2A2E39';
 const accent = '#547E6A';
 const disabled = '#eeeeee';
 
-const colors: Colors = {
+export default {
   text: '#212121',
   info: '#4096D1',
   success: '#357a38',
@@ -43,6 +43,4 @@ const colors: Colors = {
     dark: darken(0.05, accent),
     contrast: '#ffffff',
   },
-};
-
-export default colors;
+} as Colors;
