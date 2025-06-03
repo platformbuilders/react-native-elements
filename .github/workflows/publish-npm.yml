@@ -14,6 +14,10 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org/'
+      - name: Setup .npmrc for GitHub Packages
+        run: |
+          echo "@platformbuilders:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
       - name: Install
         run: yarn install && yarn build
       - name: Publish to npm
