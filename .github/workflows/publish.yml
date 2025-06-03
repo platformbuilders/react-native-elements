@@ -7,28 +7,29 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: Publish to npm
+    name: Publish to npm and GPR
     steps:
-      - uses: actions/checkout@v2
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      # Setup Node.js for both registries
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
           registry-url: 'https://registry.npmjs.org/'
       - name: Install
         run: yarn install && yarn build
       # Publish to npm
-      - name: Publish
+      - name: Publish to npm
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v1
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Setup Node.js for GitHub Packages
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
           registry-url: 'https://npm.pkg.github.com'
           scope: '@platformbuilders'
       # Publish to GitHub Packages
-      - run: npm publish --access public
+      - name: Publish to GitHub Packages
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
