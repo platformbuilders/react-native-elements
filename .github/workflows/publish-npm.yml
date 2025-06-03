@@ -14,8 +14,16 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://registry.npmjs.org/'
+          cache: '' # Desabilita cache
+      - name: Clear cache and config
+        run: |
+          yarn cache clean
+          rm -rf ~/.npmrc
+          rm -rf .npmrc
+          rm -rf node_modules
+          rm -rf yarn.lock
       - name: Install
-        run: yarn install && yarn build
+        run: yarn install --no-cache && yarn build
       - name: Publish to npm
         run: npm publish --access public
         env:
