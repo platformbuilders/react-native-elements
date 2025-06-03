@@ -23,9 +23,14 @@ jobs:
           rm -rf .npmrc
           rm -rf node_modules
           rm -rf yarn.lock
+      - name: Setup .npmrc for mixed registries
+        run: |
+          echo "@platformbuilders:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
       - name: Install
         run: yarn install --no-cache && yarn build
       - name: Publish to GitHub Packages
-        run: npm publish --access public
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }} 
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
