@@ -1,3 +1,14 @@
+# AVISO IMPORTANTE
+
+Este repositório existe apenas para fins de **compatibilidade temporária** com projetos legados.
+
+> **Para novos projetos ou manutenção contínua, utilize sempre o repositório oficial:**
+> [@platformbuilders/fluid-react-native](https://github.com/platformbuilders/fluid-react-native)
+
+Este fork só deve ser utilizado caso você precise de compatibilidade com versões antigas e não possa migrar imediatamente para a versão oficial.
+
+---
+
 # @platformbuilders/react-native-elements
 
 [![Build Status][check-badge]][workflows]
