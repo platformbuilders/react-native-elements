@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/platformbuilders/react-native-elements.git"
   },
-  "author": "Platform Builders <digitals@platformbuilders.io>",
+  "author": "Platform Builders <tecnologia@platformbuilders.io>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
