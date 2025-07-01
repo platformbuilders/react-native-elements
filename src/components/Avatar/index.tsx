@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, useRef, useState } from 'react';
 import { isEmpty } from 'lodash';
-import { RNCamera } from 'react-native-camera';
+import { useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
 import FastImage, { Source } from 'react-native-fast-image';
 import ImagePicker from 'react-native-image-picker';
 import { ImageAvatarPlaceholder as defaultAvatar } from '../../assets/images';
@@ -43,6 +43,8 @@ const Avatar: React.FC<Props> = React.forwardRef(
   ) => {
     const [uploadedImage, setUploadedImage] = useState<any>();
     const cameraRef = useRef<any>();
+    const device = useCameraDevice('front');
+    const { hasPermission } = useCameraPermission();
 
     const openPicker = (): Promise<void> => {
       const options = {
@@ -67,12 +69,18 @@ const Avatar: React.FC<Props> = React.forwardRef(
       });
     };
 
-    const takePicture = async (): Promise<void> => {
+    const takePicture = async (): Promise<any> => {
       if (cameraRef.current) {
-        const options = { quality: 0.5, base64: true };
-        const data = await cameraRef.current.takePictureAsync(options);
-        setUploadedImage(data);
-        return data;
+        try {
+          const photo = await cameraRef.current.takePhoto({
+            qualityPrioritization: 'balanced',
+          });
+          const imageUri = `file://${photo.path}`;
+          setUploadedImage(imageUri);
+          return imageUri;
+        } catch (error) {
+          console.error('Error taking picture:', error);
+        }
       }
     };
 
@@ -117,18 +125,13 @@ const Avatar: React.FC<Props> = React.forwardRef(
           showBorder,
         } as any)}
       >
-        {displayCamera && !uploadedImage ? (
+        {displayCamera && !uploadedImage && device && hasPermission ? (
           <CameraView
             ref={cameraRef}
             size={size}
-            type={RNCamera.Constants.Type.front}
-            flashMode={RNCamera.Constants.FlashMode.auto}
-            androidCameraPermissionOptions={{
-              title: 'Câmera',
-              message: 'Precisamos da sua permissão para usar a câmera',
-              buttonPositive: 'Ok',
-              buttonNegative: 'Cancelar',
-            }}
+            device={device}
+            isActive={true}
+            photo={true}
           />
         ) : (
           <FastImage

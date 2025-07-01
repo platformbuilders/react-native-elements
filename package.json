@@ -1,6 +1,6 @@
 {
   "name": "@platformbuilders/react-native-elements",
-  "version": "0.4.51",
+  "version": "0.4.60",
   "private": false,
   "description": "Platform Builders Shared Components Library For React Native",
   "keywords": [
@@ -139,7 +139,6 @@
     "react-lottie": "1.2.10",
     "react-native": "^0.77.0",
     "react-native-biometrics": "3.0.1",
-    "react-native-camera": "4.2.1",
     "react-native-check-box": "2.1.7",
     "react-native-check-version": "1.4.0",
     "react-native-code-push": "9.0.1",
@@ -179,6 +178,7 @@
     "react-native-touch-id": "4.4.1",
     "react-native-tracking-transparency": "0.1.2",
     "react-native-typography": "1.4.1",
+    "react-native-vision-camera": "^4.6.1",
     "react-native-web-image-loader": "0.1.1",
     "react-router-dom": "5.2.0",
     "react-test-renderer": "19.1.0",
@@ -200,7 +200,6 @@
     "react-input-mask": ">=2.0.4",
     "react-lottie": ">=1.2.3",
     "react-native": ">=0.63.2",
-    "react-native-camera": ">=3.31.1",
     "react-native-check-box": ">=2.1.7",
     "react-native-checkbox": ">=2.0.0",
     "react-native-collapsible": ">=1.5.2",
@@ -215,6 +214,7 @@
     "react-native-svg": ">=12.1.0",
     "react-native-typography": ">=1.4.1",
     "react-native-vector-icons": ">=7.0.0",
+    "react-native-vision-camera": ">=4.0.0",
     "react-router-dom": ">=5",
     "styled-components": ">=5"
   }
