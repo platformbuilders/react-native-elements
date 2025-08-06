@@ -48,7 +48,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.8",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
-    "date-and-time": "3.6.0",
+    "date-and-time": "4.0.0",
     "react-native-animatable": "1.4.0",
     "react-native-masked-text": "^1.13.0",
     "react-native-responsive-fontsize": "0.5.1",
